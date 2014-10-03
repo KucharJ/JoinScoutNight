@@ -1,4 +1,4 @@
 JoinScoutNight
 ==============
 
-Join Scout Night Sign In
+Basic sign in page for Cub Scouts Join Scout Night.

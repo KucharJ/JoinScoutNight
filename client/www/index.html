@@ -14,51 +14,71 @@
         <img class="top-image" src="images/BSAbackLogo.png"/>
 
         <div class="signin-box container">
-            <form class="form" role="form">
+            <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <h3>Please fill in all information:</h3>
+                    <div class="col-sm-offset-1">
+                        <h3>Please fill in all information:</h3>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="boysName" class="col-sm-2 control-label">Boy's Name:</label>
-                    <input type="text" id="boysName" class="form-control" placeholder="Scout's Name"/>
+                    <label for="boysName" class="col-sm-3 control-label">Boy's Name:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="boysName" class="form-control" placeholder="Scout's Name"/>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="boysAge" class="control-label">Age:</label>
-                    <input type="number" id="boysAge" class="form-control" min="5" max="15" placeholder="5"/>
+                    <label for="boysAge" class="col-sm-3 control-label">Age:</label>
+                    <div class="col-sm-9">
+                        <input type="number" id="boysAge" class="form-control" min="5" max="15" placeholder="5"/>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="boysGrade" class="control-label">Grade:</label>
-                    <!-- Ensure 'none' isn't selected. -->
-                    <select id="boysGrade" class="form-control">
-                        <option id="none">Choose One</option>
-                        <option id="1">1st Grade</option>
-                        <option id="2">2nd Grade</option>
-                        <option id="3">3rd Grade</option>
-                        <option id="4">4th Grade</option>
-                        <option id="5">5th Grade</option>
-                    </select>
+                    <label for="boysGrade" class="col-sm-3 control-label">Grade:</label>
+                    <div class="col-sm-9">
+                        <!-- Ensure 'none' isn't selected. -->
+                        <select id="boysGrade" class="form-control">
+                            <option id="none">Choose One</option>
+                            <option id="1">1st Grade</option>
+                            <option id="2">2nd Grade</option>
+                            <option id="3">3rd Grade</option>
+                            <option id="4">4th Grade</option>
+                            <option id="5">5th Grade</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="school" class="control-label">School:</label>
-                    <input type="text" id="school" class="form-control" placeholder="School's Name"/>
+                    <label for="school" class="col-sm-3 control-label">School:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="school" class="form-control" placeholder="School's Name"/>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="parentsName" class="control-label">Parent's Name:</label>
-                    <input type="text" id="parentsName" class="form-control" placeholder="Parent's Name"/>
+                    <label for="parentsName" class="col-sm-3 control-label">Parent's Name:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="parentsName" class="form-control" placeholder="Parent's Name"/>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="emailAddress" class="control-label">Email:</label>
-                    <input type="text" id="emailAddress" class="form-control" placeholder="YourEmail@somewhere.com"/>
+                    <label for="emailAddress" class="col-sm-3 control-label">Email:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="emailAddress" class="form-control" placeholder="YourEmail@somewhere.com"/>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="control-label">Phone Number:</label>
-                    <input type="text" id="phone" class="form-control" placeholder="512-867-5309"/>
+                    <label for="phone" class="col-sm-3 control-label">Phone Number:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="phone" class="form-control" placeholder="512-867-5309"/>
+                    </div>
                 </div>
                 <div id="signin-error" class="help-block"></div>
                 <div id="signin-success"  class="help-block"></div>
-                <div class="button-holder">
-                    <button class="btn btn-primary">Submit</button>
-                    <button class="btn btn-default">Clear</button>
+                <div class="form-group">
+                    <div class="col-sm-offset-8 col-sm-1">
+                        <button class="btn btn-default">Clear</button>
+                    </div>
+                    <div class="col-sm-offset-1 col-sm-1">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </form>
         </div>

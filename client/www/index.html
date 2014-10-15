@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="JSNInfo">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Scout Night Sign In</title>
+
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/scoutNight.css" rel="stylesheet">
+
+        <script src="third_party_js/angular.js"></script>
+        <script src="js/scoutnight.js"></script>
     </head>
     <body>
 
         <img class="top-image" src="images/BSAbackLogo.png"/>
 
         <div class="signin-box container">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" ng-controller="SignInController as signIn" ng-submit="signIn.addScout()" novalidate>
                 <div class="form-group">
                     <div class="col-sm-offset-1">
                         <h3>Please fill in all information:</h3>
@@ -23,20 +27,20 @@
                 <div class="form-group">
                     <label for="boysName" class="col-sm-3 control-label">Boy's Name:</label>
                     <div class="col-sm-9">
-                        <input type="text" id="boysName" class="form-control" placeholder="Scout's Name"/>
+                        <input type="text" id="boysName" class="form-control" placeholder="Scout's Name" ng-model="signIn.scoutInfo.scoutName" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="boysAge" class="col-sm-3 control-label">Age:</label>
                     <div class="col-sm-9">
-                        <input type="number" id="boysAge" class="form-control" min="5" max="15" placeholder="5"/>
+                        <input type="number" id="boysAge" class="form-control" min="5" max="15" placeholder="5" ng-model="signIn.scoutInfo.scoutAge" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="boysGrade" class="col-sm-3 control-label">Grade:</label>
                     <div class="col-sm-9">
                         <!-- Ensure 'none' isn't selected. -->
-                        <select id="boysGrade" class="form-control">
+                        <select id="boysGrade" class="form-control"  ng-model="signIn.scoutInfo.scoutGrade" required>
                             <option id="none">Choose One</option>
                             <option id="1">1st Grade</option>
                             <option id="2">2nd Grade</option>
@@ -49,35 +53,38 @@
                 <div class="form-group">
                     <label for="school" class="col-sm-3 control-label">School:</label>
                     <div class="col-sm-9">
-                        <input type="text" id="school" class="form-control" placeholder="School's Name"/>
+                        <input type="text" id="school" class="form-control" placeholder="School's Name" ng-model="signIn.scoutInfo.scoutSchool" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="parentsName" class="col-sm-3 control-label">Parent's Name:</label>
                     <div class="col-sm-9">
-                        <input type="text" id="parentsName" class="form-control" placeholder="Parent's Name"/>
+                        <input type="text" id="parentsName" class="form-control" placeholder="Parent's Name" ng-model="signIn.scoutInfo.parentName" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="emailAddress" class="col-sm-3 control-label">Email:</label>
                     <div class="col-sm-9">
-                        <input type="text" id="emailAddress" class="form-control" placeholder="YourEmail@somewhere.com"/>
+                        <input type="text" id="emailAddress" class="form-control has-success" placeholder="YourEmail@somewhere.com" ng-model="signIn.scoutInfo.parentEmail" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="phone" class="col-sm-3 control-label">Phone Number:</label>
                     <div class="col-sm-9">
-                        <input type="text" id="phone" class="form-control" placeholder="512-867-5309"/>
+                        <input type="text" id="phone" class="form-control" placeholder="512-867-5309" ng-model="signIn.scoutInfo.parentPhone" required/>
                     </div>
                 </div>
-                <div id="signin-error" class="help-block"></div>
-                <div id="signin-success"  class="help-block"></div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3">
+                        <p class="signin-error" ng-show="signIn.showError">{{signIn.errorText}}</p>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-8 col-sm-1">
-                        <button class="btn btn-default">Clear</button>
+                        <button class="btn btn-default" ng-click="signIn.clearScout()">Clear</button>
                     </div>
                     <div class="col-sm-offset-1 col-sm-1">
-                        <button class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </form>

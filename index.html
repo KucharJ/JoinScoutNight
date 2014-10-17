@@ -1,52 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="JSNInfo">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Joinscoutnight : Join Scout Night Sign In">
+        <title>Scout Night Sign In</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/scoutNight.css" rel="stylesheet">
 
-    <title>Joinscoutnight</title>
-  </head>
+        <script src="third_party_js/angular.min.js"></script>
+        <script src="js/scoutnight.js"></script>
+    </head>
+    <body>
 
-  <body>
+        <img class="top-image" src="images/BSAbackLogo.png"/>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/KucharJ/JoinScoutNight">View on GitHub</a>
+        <div class="signin-box container">
+            <form class="form-horizontal" role="form" ng-controller="SignInController as signIn" novalidate>
+                <div class="form-group">
+                    <div class="col-sm-offset-1">
+                        <h3>Please fill in all information:</h3>
+                    </div>
+                </div>
 
-          <h1 id="project_title">Joinscoutnight</h1>
-          <h2 id="project_tagline">Join Scout Night Sign In</h2>
+                <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.scoutNameError]">
+                    <label for="boysName" class="col-sm-3 control-label">Boy's Name:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="boysName" class="form-control" placeholder="Scout's Name" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateScoutName()" ng-model="signIn.scoutName" required/>
+                        <span class="text-danger help-block" ng-show="signIn.scoutNameError">{{signIn.scoutNameErrorText}}</span>
+                    </div>
+                </div>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/KucharJ/JoinScoutNight/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/KucharJ/JoinScoutNight/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+                <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.scoutAgeError]">
+                    <label for="boysAge" class="col-sm-3 control-label">Age:</label>
+                    <div class="col-sm-9">
+                        <input type="number" id="boysAge" class="form-control" min="5" max="15" placeholder="5" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateScoutAge()" ng-model="signIn.scoutAge" required/>
+                        <span class="text-danger help-block" ng-show="signIn.scoutAgeError">{{signIn.scoutAgeErrorText}}</span>
+                    </div>
+                </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="joinscoutnight" class="anchor" href="#joinscoutnight"><span class="octicon octicon-link"></span></a>JoinScoutNight</h1>
+                <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.scoutGradeError]">
+                    <label for="boysGrade" class="col-sm-3 control-label">Grade:</label>
+                    <div class="col-sm-9">
+                        <!-- Ensure 'none' isn't selected. -->
+                        <select id="boysGrade" class="form-control" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateScoutGrade()" ng-model="signIn.scoutGrade" required>
+                            <option id="none">Choose One</option>
+                            <option id="1">1st Grade</option>
+                            <option id="2">2nd Grade</option>
+                            <option id="3">3rd Grade</option>
+                            <option id="4">4th Grade</option>
+                            <option id="5">5th Grade</option>
+                        </select>
+                        <span class="text-danger help-block" ng-show="signIn.scoutGradeError">{{signIn.scoutGradeErrorText}}</span>
+                    </div>
+                </div>
 
-<p>Basic sign in page for Cub Scouts join scout night.</p>
-      </section>
-    </div>
+                <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.scoutSchoolError]">
+                    <label for="school" class="col-sm-3 control-label">School:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="school" class="form-control" placeholder="School's Name" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateScoutSchool()" ng-model="signIn.scoutSchool" required/>
+                        <span class="text-danger help-block" ng-show="signIn.scoutSchoolError">{{signIn.scoutSchoolErrorText}}</span>
+                    </div>
+                </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Joinscoutnight maintained by <a href="https://github.com/KucharJ">KucharJ</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+                <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.parentNameError]">
+                    <label for="parentsName" class="col-sm-3 control-label">Parent's Name:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="parentsName" class="form-control" placeholder="Parent's Name" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateParentName()" ng-model="signIn.parentName" required/>
+                        <span class="text-danger help-block" ng-show="signIn.parentNameError">{{signIn.parentNameErrorText}}</span>
+                    </div>
+                </div>
 
-    
+                <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.parentEmailError]">
+                    <label for="emailAddress" class="col-sm-3 control-label">Email:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="emailAddress" class="form-control has-success" placeholder="YourEmail@somewhere.com" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateParentEmail()" ng-model="signIn.parentEmail" required/>
+                        <span class="text-danger help-block" ng-show="signIn.parentEmailError">{{signIn.parentEmailErrorText}}</span>
+                    </div>
+                </div>
 
-  </body>
+                <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.parentPhoneError]">
+                    <label for="phone" class="col-sm-3 control-label">Phone Number:</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="phone" class="form-control" placeholder="512-867-5309" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateParentPhone()" ng-model="signIn.parentPhone" required/>
+                        <span class="text-danger help-block" ng-show="signIn.parentPhoneError">{{signIn.parentPhoneErrorText}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3">
+                        <p class="text-danger" ng-show="signIn.showError">{{signIn.errorText}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-8 col-sm-1">
+                        <button class="btn btn-default" ng-click="signIn.clearScout()">Clear</button>
+                    </div>
+                    <div class="col-sm-offset-1 col-sm-1">
+                        <button class="btn btn-primary" ng-click="signIn.addScout()">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <img class="bottom-image" src="images/CubScout_4K.png"/>
+
+    </body>
 </html>

@@ -17,33 +17,33 @@
 
         <img class="top-image" src="images/BSAbackLogo.png"/>
 
-        <div class="signin-box container">
+        <div class="signin-box container col-xs-offset-1 col-xs-10">
             <form class="form-horizontal" role="form" ng-controller="SignInController as signIn" novalidate>
                 <div class="form-group">
-                    <div class="col-sm-offset-1">
+                    <div class="col-xs-offset-1">
                         <h3>Please fill in all information:</h3>
                     </div>
                 </div>
 
                 <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.scoutNameError]">
-                    <label for="boysName" class="col-sm-3 control-label">Boy's Name:</label>
-                    <div class="col-sm-9">
+                    <label for="boysName" class="col-xs-3 control-label">Boy's Name:</label>
+                    <div class="col-xs-9">
                         <input type="text" id="boysName" class="form-control" placeholder="Scout's Name" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateScoutName()" ng-model="signIn.scoutName" required/>
                         <span class="text-danger help-block" ng-show="signIn.scoutNameError">{{signIn.scoutNameErrorText}}</span>
                     </div>
                 </div>
 
                 <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.scoutAgeError]">
-                    <label for="boysAge" class="col-sm-3 control-label">Age:</label>
-                    <div class="col-sm-9">
+                    <label for="boysAge" class="col-xs-3 control-label">Age:</label>
+                    <div class="col-xs-9">
                         <input type="number" id="boysAge" class="form-control" min="5" max="15" placeholder="5" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateScoutAge()" ng-model="signIn.scoutAge" required/>
                         <span class="text-danger help-block" ng-show="signIn.scoutAgeError">{{signIn.scoutAgeErrorText}}</span>
                     </div>
                 </div>
 
                 <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.scoutGradeError]">
-                    <label for="boysGrade" class="col-sm-3 control-label">Grade:</label>
-                    <div class="col-sm-9">
+                    <label for="boysGrade" class="col-xs-3 control-label">Grade:</label>
+                    <div class="col-xs-9">
                         <!-- Ensure 'none' isn't selected. -->
                         <select id="boysGrade" class="form-control" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateScoutGrade()" ng-model="signIn.scoutGrade" required>
                             <option id="none">Choose One</option>
@@ -58,48 +58,48 @@
                 </div>
 
                 <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.scoutSchoolError]">
-                    <label for="school" class="col-sm-3 control-label">School:</label>
-                    <div class="col-sm-9">
+                    <label for="school" class="col-xs-3 control-label">School:</label>
+                    <div class="col-xs-9">
                         <input type="text" id="school" class="form-control" placeholder="School's Name" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateScoutSchool()" ng-model="signIn.scoutSchool" required/>
                         <span class="text-danger help-block" ng-show="signIn.scoutSchoolError">{{signIn.scoutSchoolErrorText}}</span>
                     </div>
                 </div>
 
                 <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.parentNameError]">
-                    <label for="parentsName" class="col-sm-3 control-label">Parent's Name:</label>
-                    <div class="col-sm-9">
+                    <label for="parentsName" class="col-xs-3 control-label">Parent's Name:</label>
+                    <div class="col-xs-9">
                         <input type="text" id="parentsName" class="form-control" placeholder="Parent's Name" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateParentName()" ng-model="signIn.parentName" required/>
                         <span class="text-danger help-block" ng-show="signIn.parentNameError">{{signIn.parentNameErrorText}}</span>
                     </div>
                 </div>
 
                 <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.parentEmailError]">
-                    <label for="emailAddress" class="col-sm-3 control-label">Email:</label>
-                    <div class="col-sm-9">
+                    <label for="emailAddress" class="col-xs-3 control-label">Email:</label>
+                    <div class="col-xs-9">
                         <input type="text" id="emailAddress" class="form-control has-success" placeholder="YourEmail@somewhere.com" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateParentEmail()" ng-model="signIn.parentEmail" required/>
                         <span class="text-danger help-block" ng-show="signIn.parentEmailError">{{signIn.parentEmailErrorText}}</span>
                     </div>
                 </div>
 
                 <div class="form-group" ng-class="{true:'has-error', false: ''}[signIn.parentPhoneError]">
-                    <label for="phone" class="col-sm-3 control-label">Phone Number:</label>
-                    <div class="col-sm-9">
+                    <label for="phone" class="col-xs-3 control-label">Phone Number:</label>
+                    <div class="col-xs-9">
                         <input type="text" id="phone" class="form-control" placeholder="512-867-5309" ng-model-options="{ updateOn: 'blur' }" ng-change="signIn.validateParentPhone()" ng-model="signIn.parentPhone" required/>
                         <span class="text-danger help-block" ng-show="signIn.parentPhoneError">{{signIn.parentPhoneErrorText}}</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-offset-3">
+                    <div class="col-xs-offset-3">
                         <p class="text-danger" ng-show="signIn.showError">{{signIn.errorText}}</p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-offset-8 col-sm-1">
+                    <div class="col-xs-offset-8 col-xs-1">
                         <button class="btn btn-default" ng-click="signIn.clearScout()">Clear</button>
                     </div>
-                    <div class="col-sm-offset-1 col-sm-1">
+                    <div class="col-xs-offset-1 col-xs-1">
                         <button class="btn btn-primary" ng-click="signIn.addScout()">Submit</button>
                     </div>
                 </div>
